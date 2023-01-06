@@ -18,7 +18,189 @@
   <body>
     <div
       x-data="{ 
-      open: false 
+      brands: null,
+      brands_id: null,
+      brands_name: null,
+      models: null,
+      models_id: null,
+      models_name: null,
+      models_year: null,
+      models_bodytype: null,
+      models_power: null,
+      models_brand_id: null,
+      responseData: null,
+      responseDataBrand: null,
+      responseDataOwner: null,
+      responseDataToken: null,
+
+      inputBrandID: null,
+      inputBrandName: null,
+      inputModelID: null,
+      inputModelName: null,
+      inputModelYear: null,
+      inputModelBodytype: null,
+      inputModelPower: null,
+      inputModelBrandID: null,
+
+      postModelID: null,
+      postModelName: null,
+      postModelYear: null,
+      postModelBodytype: null,
+      postModelPower: null,
+      postModelCylinders: null,
+      postModelLiters: null,
+      postModelBrandID: null,
+      postBrandID: null,
+      postBrandName: null,
+      postBrandCountry: null,
+      postBrandHeadquarters: null,
+      postBrandDate: null,
+      postBrandOwnerID: null,
+      postOwnerName: null,
+      postOwnerPassword: null,
+      postOwnerTokenUsername: null,
+      postOwnerTokenPassword: null,
+
+      async get_brands(){
+        this.brands = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/brand/',
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_brand(){
+        this.brands_id = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/brand/id/', + this.inputBrandID,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_brand_name(){
+        this.brands_name = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/brand/name/', + this.inputBrandName,
+        {
+          method: 'GET'
+        })).json();
+      }
+      
+      async get_models(){
+        this.models = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/',
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model(){
+        this.models_id = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/id/', + this.inputModelID,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model_name(){
+        this.models_name = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/name/', + this.inputModelName,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model_year(){
+        this.models_year = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/year/', + this.inputModelYear,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model_bodytype(){
+        this.models_bodytype = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/bodytype/', + this.inputModelBodytype,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model_power(){
+        this.models_power = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/power/', + this.inputModelPower,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async get_model_brand(){
+        this.models_brand_id = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/model/brand/', + this.inputModelBrandID,
+        {
+          method: 'GET'
+        })).json();
+      }
+
+      async post_model(){
+        this.responseData = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/brand/' + this.inputBrandID + '/model/',
+        {
+          method: 'POST',
+          body :JSON.stringify({
+            name: this.postModelName,
+            year: this.postModelYear,
+            body_type: this.postModelBodytype,
+            power_hp: this.postModelPower,
+            cylinders: this.postModelCylinders,
+            liters: this.postModelLiters,
+            id: this.postModelID,
+            brand_id: this.postModelBrandID,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        })).json();
+      }
+
+      async post_brand(){
+        this.responseDataBrand = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/brand/',
+        {
+          method: 'POST',
+          body :JSON.stringify({
+            id: this.postBrandID,
+            headquarters_city: this.postBrandHeadquarters,
+            owner_id: this.postBrandOwnerID,
+            name: this.postBrandName,
+            country: this.postBrandCountry,
+            date_founded: this.postBrandDate,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        })).json();
+      }
+
+      async post_owner(){
+        this.responseDataOwner = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/owner/',
+        {
+          method: 'POST',
+          body :JSON.stringify({
+            name: this.postOwnerName,
+            password: this.postOwnerPassword,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        })).json();
+      }
+
+      async post_token(){
+        this.responseDataToken = await (await fetch('https://cars-mathiaswouters.cloud.okteto.net/token',
+        {
+          method: 'POST',
+          body :JSON.stringify({
+            client_id: '',
+            client_secret: '',
+            scope: '',
+            grant_type: '',
+            refresh_token: '',
+            username: this.postOwnerTokenUsername,
+            password: this.postOwnerTokenPassword,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        })).json();
+      }
     }"
     >
       <!--=================== INTRO ===================-->
@@ -30,7 +212,8 @@
                 <h1>Off-Road Cars API</h1>
               </div>
               <div>
-                <p>Welcome to the Off-Road Car API, created by Mathias Wouters! This API allows you to access information about a wide variety of off-road vehicles, including their specifications. Whether you are an enthusiast looking for detailed information about your favorite off-road cars or a developer building an app that utilizes this data, our API has you covered.</p>
+                <h1>Welcome to the Off-Road Car API</h1>
+                <p>This API allows you to access information about a wide variety of off-road vehicles, including their specifications. Whether you are an enthusiast looking for detailed information about your favorite off-road cars or a developer building an app that utilizes this data, our API has you covered.</p>
                 <p>Start exploring the world of off-road cars today with our comprehensive API!</p>
               </div>
             </div>
@@ -45,6 +228,159 @@
       </header>
 
       <!--=================== MODEL ===================-->
+      <div id="model" class="mb-4 mt-5">
+        <!-- All models -->
+        <div>
+          <div class="text-center col-8 mx-auto">
+            <h2 class="mb-5">All models</h2>
+          </div>
+          <div class="row">
+            <template x-for="model in models">
+              <div class="col-4 d-flex justify-content-center">
+                <div class="frame">
+                  <h3 x-text="model.name"></h3>
+                  <ul>
+                    <li>Name: <strong x-text="model.name"></strong></li>
+                    <li>Year: <strong x-text="model.year"></strong></li>
+                    <li>Body-type: <strong x-text="model.body_type"></strong></li>
+                    <li>Power: <strong x-text="model.power_hp"></strong>hp</li>
+                    <li>Cylinders: <strong x-text="model.cylinders"></strong></li>
+                    <li>Liters: <strong x-text="model.liters"></strong></li>
+                    <li>ID: <strong x-text="model.id"></strong></li>
+                    <li>Brand ID: <strong x-text="model.brand_id"></strong></li>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Model ID -->
+        <div class="row mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>Model ID</h2>
+            <input class="col-6" type="text" x-model="inputModelID" />
+            <button id="modelidsearch" class="col-6" x-on:click="get_beer">Search</button>
+            <div id="overviewBeer" class="invisible">
+              <div class="col-12 frame">
+                <h3 x-text="beerName.name"></h3>
+                <ul>
+                  <li>Volume: <strong x-text="beerName.volume"></strong></li>
+                  <li>Alcohol percentage: <strong x-text="beerName.alcohol_perc"></strong>%</li>
+                  <li>type: <strong x-text="beerName.type"></strong></li>
+                  <li>Brewery: <strong x-text="beerName.brewery_id"></strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPECIFIC BEER -->
+        <div class="row mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>SPECIFIC BEER</h2>
+            <input class="col-6" type="text" x-model="inputNameBeer" />
+            <button id="beerSearch" class="col-6" x-on:click="get_beer">Search</button>
+            <div id="overviewBeer" class="invisible">
+              <div class="col-12 frame">
+                <h3 x-text="beerName.name"></h3>
+                <ul>
+                  <li>Volume: <strong x-text="beerName.volume"></strong></li>
+                  <li>Alcohol percentage: <strong x-text="beerName.alcohol_perc"></strong>%</li>
+                  <li>type: <strong x-text="beerName.type"></strong></li>
+                  <li>Brewery: <strong x-text="beerName.brewery_id"></strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BEER BY BREWERY ID-->
+        <div class="mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>BEER BY BREWERY ID</h2>
+            <input class="col-6" type="text" x-model="inputBreweryId" />
+            <button id="breweryIdSearch" class="col-6" x-on:click="get_beer_per_brewery">Search</button>
+          </div>
+          <div id="overBreweryID" class="invisible">
+            <div class="row">
+              <template x-for="beer in beersFromBrewery">
+                <div class="col-4 d-flex justify-content-center">
+                  <div class="frame">
+                    <h3 x-text="beer.name"></h3>
+                    <ul>
+                      <li>Volume: <strong x-text="beer.volume"></strong></li>
+                      <li>Alcohol percentage: <strong x-text="beer.alcohol_perc"></strong>%</li>
+                      <li>type: <strong x-text="beer.type"></strong></li>
+                      <li>Brewery: <strong x-text="beer.brewery_id"></strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <!-- BEER BY TYPE -->
+        <div id="typeSearchbar" class="mt-5 mb-4">
+          <div class="text-center col-8 mx-auto">
+            <h2>BEER BY TYPE</h2>
+            <div>
+              <input class="col-6" type="text" x-model="inputType" />
+              <button id="typeSearch" class="col-6" x-on:click="get_type">Search</button>
+            </div>
+          </div>
+          <div id="overviewType" class="invisible">
+            <div class="row">
+              <template x-for="beer in beersFromType">
+                <div class="col-4 d-flex justify-content-center">
+                  <div class="frame">
+                    <h3 x-text="beer.name"></h3>
+                    <ul>
+                      <li>Volume: <strong x-text="beer.volume"></strong></li>
+                      <li>Alcohol percentage: <strong x-text="beer.alcohol_perc"></strong>%</li>
+                      <li>type: <strong x-text="beer.type"></strong></li>
+                      <li>Brewery: <strong x-text="beer.brewery_id"></strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <!-- ADD NEW BEER -->
+        <div class="row">
+          <div class="col-8 mx-auto input" id="inputBeer">
+            <h2>ADD NEW BEER</h2>
+            <form onsubmit="return false" id="formBeer">
+              <div class="form-group">
+                <label for="beerName">Name:</label>
+                <input id="beerName" class="form-control" type="text" x-model="postBeName" />
+              </div>
+              <div class="form-group">
+                <label for="beerVolume">Volume:</label>
+                <input id="beerVolume" class="form-control" type="number" x-model="postBeVolume" />
+              </div>
+              <div class="form-group">
+                <label for="beerAlcohol">Alcohol percentage:</label>
+                <input id="beerAlcohol" class="form-control" type="number" x-model="postBeAlcoholPerc" />
+              </div>
+              <div class="form-group">
+                <label for="breweryId">brewery id:</label>
+                <input id="breweryId" class="form-control" type="number" x-model="postBeBreweryId" />
+              </div>
+              <div class="form-group">
+                <label for="beerType">Type:</label>
+                <input id="beerType" class="form-control" type="text" x-model="postBeType" />
+              </div>
+              <div>
+                <button id="postBeer" x-on:click="post_beer">Create beer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!--=================== MODEL TEEEEEEEEEEEEEEEEEST ===================-->
       <section>
         <div class="container">
           <div class="text-center section-title">
