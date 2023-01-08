@@ -260,35 +260,115 @@
           <div class="text-center col-8 mx-auto">
             <h2>Model ID</h2>
             <input class="col-6" type="text" x-model="inputModelID" />
-            <button id="modelidsearch" class="col-6" x-on:click="get_beer">Search</button>
-            <div id="overviewBeer" class="invisible">
+            <button id="modelidsearch" class="col-6" x-on:click="get_model">Search</button>
+            <div id="overviewModelID" class="invisible">
               <div class="col-12 frame">
-                <h3 x-text="beerName.name"></h3>
+                <h3 x-text="model.name"></h3>
                 <ul>
-                  <li>Volume: <strong x-text="beerName.volume"></strong></li>
-                  <li>Alcohol percentage: <strong x-text="beerName.alcohol_perc"></strong>%</li>
-                  <li>type: <strong x-text="beerName.type"></strong></li>
-                  <li>Brewery: <strong x-text="beerName.brewery_id"></strong></li>
+                  <li>Name: <strong x-text="model.name"></strong></li>
+                  <li>Year: <strong x-text="model.year"></strong></li>
+                  <li>Body-type: <strong x-text="model.body_type"></strong></li>
+                  <li>Power: <strong x-text="model.power_hp"></strong>hp</li>
+                  <li>Cylinders: <strong x-text="model.cylinders"></strong></li>
+                  <li>Liters: <strong x-text="model.liters"></strong></li>
+                  <li>ID: <strong x-text="model.id"></strong></li>
+                  <li>Brand ID: <strong x-text="model.brand_id"></strong></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SPECIFIC BEER -->
+        <!-- Model Name -->
         <div class="row mb-4 mt-5">
           <div class="text-center col-8 mx-auto">
-            <h2>SPECIFIC BEER</h2>
-            <input class="col-6" type="text" x-model="inputNameBeer" />
-            <button id="beerSearch" class="col-6" x-on:click="get_beer">Search</button>
-            <div id="overviewBeer" class="invisible">
+            <h2>Model Name</h2>
+            <input class="col-6" type="text" x-model="inputModelName" />
+            <button id="modelnamesearch" class="col-6" x-on:click="get_model_name">Search</button>
+            <div id="overviewModelName" class="invisible">
               <div class="col-12 frame">
-                <h3 x-text="beerName.name"></h3>
+                <h3 x-text="models_name.name"></h3>
                 <ul>
-                  <li>Volume: <strong x-text="beerName.volume"></strong></li>
-                  <li>Alcohol percentage: <strong x-text="beerName.alcohol_perc"></strong>%</li>
-                  <li>type: <strong x-text="beerName.type"></strong></li>
-                  <li>Brewery: <strong x-text="beerName.brewery_id"></strong></li>
+                  <li>Name: <strong x-text="models_name.name"></strong></li>
+                  <li>Year: <strong x-text="models_name.year"></strong></li>
+                  <li>Body-type: <strong x-text="models_name.body_type"></strong></li>
+                  <li>Power: <strong x-text="models_name.power_hp"></strong>hp</li>
+                  <li>Cylinders: <strong x-text="models_name.cylinders"></strong></li>
+                  <li>Liters: <strong x-text="models_name.liters"></strong></li>
+                  <li>ID: <strong x-text="models_name.id"></strong></li>
+                  <li>Brand ID: <strong x-text="models_name.brand_id"></strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Year -->
+        <div class="row mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>Model Year</h2>
+            <input class="col-6" type="text" x-model="inputModelYear" />
+            <button id="modelyearsearch" class="col-6" x-on:click="get_model_year">Search</button>
+            <div id="overviewModelYear" class="invisible">
+              <div class="col-12 frame">
+                <h3 x-text="model.name"></h3>
+                <ul>
+                  <li>Name: <strong x-text="model.name"></strong></li>
+                  <li>Year: <strong x-text="model.year"></strong></li>
+                  <li>Body-type: <strong x-text="model.body_type"></strong></li>
+                  <li>Power: <strong x-text="model.power_hp"></strong>hp</li>
+                  <li>Cylinders: <strong x-text="model.cylinders"></strong></li>
+                  <li>Liters: <strong x-text="model.liters"></strong></li>
+                  <li>ID: <strong x-text="model.id"></strong></li>
+                  <li>Brand ID: <strong x-text="model.brand_id"></strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Body Type -->
+        <div class="row mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>Model Body Type</h2>
+            <input class="col-6" type="text" x-model="inputModelBodytype" />
+            <button id="modelbodytypesearch" class="col-6" x-on:click="get_model_bodytype">Search</button>
+            <div id="overviewModelBodytype" class="invisible">
+              <div class="col-12 frame">
+                <h3 x-text="model.name"></h3>
+                <ul>
+                  <li>Name: <strong x-text="model.name"></strong></li>
+                  <li>Year: <strong x-text="model.year"></strong></li>
+                  <li>Body-type: <strong x-text="model.body_type"></strong></li>
+                  <li>Power: <strong x-text="model.power_hp"></strong>hp</li>
+                  <li>Cylinders: <strong x-text="model.cylinders"></strong></li>
+                  <li>Liters: <strong x-text="model.liters"></strong></li>
+                  <li>ID: <strong x-text="model.id"></strong></li>
+                  <li>Brand ID: <strong x-text="model.brand_id"></strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Power -->
+        <div class="row mb-4 mt-5">
+          <div class="text-center col-8 mx-auto">
+            <h2>Model Power</h2>
+            <input class="col-6" type="text" x-model="inputModelPower" />
+            <button id="modelpowersearch" class="col-6" x-on:click="get_model_power">Search</button>
+            <div id="overviewModelPower" class="invisible">
+              <div class="col-12 frame">
+                <h3 x-text="model.name"></h3>
+                <ul>
+                  <li>Name: <strong x-text="model.name"></strong></li>
+                  <li>Year: <strong x-text="model.year"></strong></li>
+                  <li>Body-type: <strong x-text="model.body_type"></strong></li>
+                  <li>Power: <strong x-text="model.power_hp"></strong>hp</li>
+                  <li>Cylinders: <strong x-text="model.cylinders"></strong></li>
+                  <li>Liters: <strong x-text="model.liters"></strong></li>
+                  <li>ID: <strong x-text="model.id"></strong></li>
+                  <li>Brand ID: <strong x-text="model.brand_id"></strong></li>
                 </ul>
               </div>
             </div>
@@ -320,60 +400,46 @@
             </div>
           </div>
         </div>
-        <!-- BEER BY TYPE -->
-        <div id="typeSearchbar" class="mt-5 mb-4">
-          <div class="text-center col-8 mx-auto">
-            <h2>BEER BY TYPE</h2>
-            <div>
-              <input class="col-6" type="text" x-model="inputType" />
-              <button id="typeSearch" class="col-6" x-on:click="get_type">Search</button>
-            </div>
-          </div>
-          <div id="overviewType" class="invisible">
-            <div class="row">
-              <template x-for="beer in beersFromType">
-                <div class="col-4 d-flex justify-content-center">
-                  <div class="frame">
-                    <h3 x-text="beer.name"></h3>
-                    <ul>
-                      <li>Volume: <strong x-text="beer.volume"></strong></li>
-                      <li>Alcohol percentage: <strong x-text="beer.alcohol_perc"></strong>%</li>
-                      <li>type: <strong x-text="beer.type"></strong></li>
-                      <li>Brewery: <strong x-text="beer.brewery_id"></strong></li>
-                    </ul>
-                  </div>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-        <!-- ADD NEW BEER -->
+
+        <!-- Post model -->
         <div class="row">
-          <div class="col-8 mx-auto input" id="inputBeer">
-            <h2>ADD NEW BEER</h2>
-            <form onsubmit="return false" id="formBeer">
+          <div class="col-8 mx-auto input" id="inputModel">
+            <h2>Add new model</h2>
+            <form onsubmit="return false" id="formModel">
               <div class="form-group">
-                <label for="beerName">Name:</label>
-                <input id="beerName" class="form-control" type="text" x-model="postBeName" />
+                <label for="modelName">Name:</label>
+                <input id="modelName" class="form-control" type="text" x-model="postModelName" />
               </div>
               <div class="form-group">
-                <label for="beerVolume">Volume:</label>
-                <input id="beerVolume" class="form-control" type="number" x-model="postBeVolume" />
+                <label for="modelYear">Year:</label>
+                <input id="modelYear" class="form-control" type="number" x-model="postModelYear" />
               </div>
               <div class="form-group">
-                <label for="beerAlcohol">Alcohol percentage:</label>
-                <input id="beerAlcohol" class="form-control" type="number" x-model="postBeAlcoholPerc" />
+                <label for="modelBodytype">Body Type:</label>
+                <input id="modelBodytype" class="form-control" type="text" x-model="postModelBodytype" />
               </div>
               <div class="form-group">
-                <label for="breweryId">brewery id:</label>
-                <input id="breweryId" class="form-control" type="number" x-model="postBeBreweryId" />
+                <label for="modelPower">Power:</label>
+                <input id="modelPower" class="form-control" type="number" x-model="postModelPower" />
               </div>
               <div class="form-group">
-                <label for="beerType">Type:</label>
-                <input id="beerType" class="form-control" type="text" x-model="postBeType" />
+                <label for="modelCylinders">Cylinders:</label>
+                <input id="modelCylinders" class="form-control" type="number" x-model="postModelCylinders" />
+              </div>
+              <div class="form-group">
+                <label for="modelLiters">Liters:</label>
+                <input id="modelLiters" class="form-control" type="number" x-model="postModelLiters" />
+              </div>
+              <div class="form-group">
+                <label for="modelID">ID:</label>
+                <input id="modelID" class="form-control" type="number" x-model="postModelID" />
+              </div>
+              <div class="form-group">
+                <label for="modelBrandID">Brand ID:</label>
+                <input id="modelBrandID" class="form-control" type="number" x-model="postModelBrandID" />
               </div>
               <div>
-                <button id="postBeer" x-on:click="post_beer">Create beer</button>
+                <button id="postModel" x-on:click="post_model">Add model</button>
               </div>
             </form>
           </div>
